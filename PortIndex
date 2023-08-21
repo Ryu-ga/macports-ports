@@ -1,0 +1,2 @@
+fish 528
+variants {debug universal} depends_build {path:bin/cmake:cmake port:gettext} depends_test port:py39-pexpect portdir shells/fish description {A command line shell for the 90s} homepage https://fishshell.com/ epoch 0 platforms darwin depends_lib {port:libiconv port:ncurses port:gettext-runtime} name fish license GPL-2 long_description {fish is a smart and user-friendly command line shell for OS X, Linux, and the rest of the family} maintainers nomaintainer depends_extract bin:xz:xz version 3.6.0 categories shells revision 0

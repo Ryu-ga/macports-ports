@@ -1,0 +1,49 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 35d54561c..9aa97b58d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -194,6 +194,7 @@ target_include_directories(fishlib PRIVATE
+ 
+ # Define fish.
+ add_executable(fish src/fish.cpp)
++target_link_libraries(fish "-framework CoreFoundation")
+ fish_link_deps_and_sign(fish)
+ 
+ # Define fish_indent.
+diff --git a/src/wutil.cpp b/src/wutil.cpp
+index 085858c15..1e87422e1 100644
+--- a/src/wutil.cpp
++++ b/src/wutil.cpp
+@@ -208,6 +208,23 @@ void dir_iter_t::rewind() {
+ 
+ dir_iter_t::~dir_iter_t() = default;
+ 
++#include <CoreFoundation/CoreFoundation.h>
++
++static wcstring filename2wcstring(const char* filename) {
++    CFStringRef cfPath = CFStringCreateWithCString(NULL, filename, kCFStringEncodingUTF8);
++    CFIndex len = CFStringGetLength(cfPath);
++    CFMutableStringRef cfMutablePath = CFStringCreateMutableCopy(NULL, 0, cfPath);
++    CFStringNormalize(cfMutablePath, kCFStringNormalizationFormC);
++    char* new_buffer = (char* )malloc(len*4 + 1);
++    CFStringGetCString(cfMutablePath, new_buffer, len*4 + 1, kCFStringEncodingUTF8);
++    wcstring result = str2wcstring(new_buffer);
++    free(new_buffer);
++    CFRelease(cfPath);
++    CFRelease(cfMutablePath);
++
++    return result;
++}
++
+ const dir_iter_t::entry_t *dir_iter_t::next() {
+     if (!dir_) {
+         return nullptr;
+@@ -224,7 +241,7 @@ const dir_iter_t::entry_t *dir_iter_t::next() {
+         return next();
+     }
+     entry_.reset();
+-    entry_.name = str2wcstring(dent->d_name);
++    entry_.name = filename2wcstring(dent->d_name);
+     entry_.inode = dent->d_ino;
+ #ifdef HAVE_STRUCT_DIRENT_D_TYPE
+     auto type = dirent_type_to_entry_type(dent->d_type);
