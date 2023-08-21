@@ -1,7 +1,7 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
+diff --git CMakeLists.txt CMakeLists.txt
 index 35d54561c..9aa97b58d 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- CMakeLists.txt
++++ CMakeLists.txt
 @@ -194,6 +194,7 @@ target_include_directories(fishlib PRIVATE
  
  # Define fish.
@@ -10,10 +10,10 @@ index 35d54561c..9aa97b58d 100644
  fish_link_deps_and_sign(fish)
  
  # Define fish_indent.
-diff --git a/src/wutil.cpp b/src/wutil.cpp
+diff --git src/wutil.cpp src/wutil.cpp
 index 085858c15..1e87422e1 100644
---- a/src/wutil.cpp
-+++ b/src/wutil.cpp
+--- src/wutil.cpp
++++ src/wutil.cpp
 @@ -208,6 +208,23 @@ void dir_iter_t::rewind() {
  
  dir_iter_t::~dir_iter_t() = default;
