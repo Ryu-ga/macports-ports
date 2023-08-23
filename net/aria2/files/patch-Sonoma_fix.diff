@@ -1,0 +1,61 @@
+diff --git src/OptionHandlerException.cc src/OptionHandlerException.cc
+index 738181fe..646ee635 100644
+--- src/OptionHandlerException.cc
++++ src/OptionHandlerException.cc
+@@ -38,8 +38,8 @@
+ namespace aria2 {
+ 
+ namespace {
+-const char* MESSAGE =
+-    _("We encountered a problem while processing the option '--%s'.");
++const char* _message = "We encountered a problem while processing the option '--%s'.";
++const char* MESSAGE = NULL;
+ } // namespace
+ 
+ OptionHandlerException::OptionHandlerException(const char* file, int line,
+@@ -48,6 +48,7 @@ OptionHandlerException::OptionHandlerException(const char* file, int line,
+                            error_code::OPTION_ERROR),
+       pref_(pref)
+ {
++  MESSAGE = _(_message);
+ }
+ 
+ OptionHandlerException::OptionHandlerException(const char* file, int line,
+@@ -57,6 +58,7 @@ OptionHandlerException::OptionHandlerException(const char* file, int line,
+                            error_code::OPTION_ERROR, cause),
+       pref_(pref)
+ {
++  MESSAGE = _(_message);
+ }
+ 
+ OptionHandlerException::~OptionHandlerException() throw() = default;
+diff --git src/UnknownOptionException.cc src/UnknownOptionException.cc
+index 1cf4f208..1c0edeb4 100644
+--- src/UnknownOptionException.cc
++++ src/UnknownOptionException.cc
+@@ -38,7 +38,8 @@
+ namespace aria2 {
+ 
+ namespace {
+-const char* MESSAGE = _("Unknown option '%s'");
++const char* _message = "Unknown option '%s'";
++const char* MESSAGE = NULL;
+ } // namespace
+ 
+ UnknownOptionException::UnknownOptionException(const char* file, int line,
+@@ -47,6 +48,7 @@ UnknownOptionException::UnknownOptionException(const char* file, int line,
+                            error_code::OPTION_ERROR),
+       unknownOption_(unknownOption)
+ {
++  MESSAGE = _(_message);
+ }
+ 
+ UnknownOptionException::UnknownOptionException(const char* file, int line,
+@@ -56,6 +58,7 @@ UnknownOptionException::UnknownOptionException(const char* file, int line,
+                            error_code::OPTION_ERROR, cause),
+       unknownOption_(unknownOption)
+ {
++  MESSAGE = _(_message);
+ }
+ 
+ UnknownOptionException::~UnknownOptionException() throw() = default;
