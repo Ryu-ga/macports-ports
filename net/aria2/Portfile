@@ -29,6 +29,8 @@ depends_lib-append      port:gettext-runtime \
                         port:libuv \
                         port:libxml2
 
+patchfiles              patch-sonoma_fix.diff
+
 # use_* must be defined after depends_*, otherwise the automatic dependencies
 # will be overwritten.
 # Alternatively, depends_*-append could be used.
