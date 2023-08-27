@@ -1,0 +1,56 @@
+diff --git gettext-runtime/configure gettext-runtime/configure
+index 56cc8e1..6650f53 100755
+--- gettext-runtime/configure
++++ gettext-runtime/configure
+@@ -25599,7 +25599,7 @@ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+   gt_save_LIBS="$LIBS"
+-     LIBS="$LIBS -Wl,-framework -Wl,CoreFoundation"
++     LIBS="$LIBS -Wl,-framework -Wl,CoreFoundation -Wl,-framework -Wl,CoreServices"
+      cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <CoreFoundation/CFPreferences.h>
+@@ -25635,7 +25635,7 @@ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+   gt_save_LIBS="$LIBS"
+-     LIBS="$LIBS -Wl,-framework -Wl,CoreFoundation"
++     LIBS="$LIBS -Wl,-framework -Wl,CoreFoundation -Wl,-framework -Wl,CoreServices"
+      cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <CoreFoundation/CFLocale.h>
+@@ -25667,7 +25667,7 @@ printf "%s\n" "#define HAVE_CFLOCALECOPYPREFERREDLANGUAGES 1" >>confdefs.h
+   INTL_MACOSX_LIBS=
+   if test $gt_cv_func_CFPreferencesCopyAppValue = yes \
+      || test $gt_cv_func_CFLocaleCopyPreferredLanguages = yes; then
+-    INTL_MACOSX_LIBS="-Wl,-framework -Wl,CoreFoundation"
++    INTL_MACOSX_LIBS="-Wl,-framework -Wl,CoreFoundation -Wl,-framework -Wl,CoreServices"
+   fi
+ 
+ 
+@@ -26146,7 +26146,7 @@ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+   gt_save_LIBS="$LIBS"
+-     LIBS="$LIBS -Wl,-framework -Wl,CoreFoundation"
++     LIBS="$LIBS -Wl,-framework -Wl,CoreFoundation -Wl,-framework -Wl,CoreServices"
+      cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <CoreFoundation/CFPreferences.h>
+@@ -26182,7 +26182,7 @@ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+   gt_save_LIBS="$LIBS"
+-     LIBS="$LIBS -Wl,-framework -Wl,CoreFoundation"
++     LIBS="$LIBS -Wl,-framework -Wl,CoreFoundation -Wl,-framework -Wl,CoreServices"
+      cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <CoreFoundation/CFLocale.h>
+@@ -26214,7 +26214,7 @@ printf "%s\n" "#define HAVE_CFLOCALECOPYPREFERREDLANGUAGES 1" >>confdefs.h
+   INTL_MACOSX_LIBS=
+   if test $gt_cv_func_CFPreferencesCopyAppValue = yes \
+      || test $gt_cv_func_CFLocaleCopyPreferredLanguages = yes; then
+-    INTL_MACOSX_LIBS="-Wl,-framework -Wl,CoreFoundation"
++    INTL_MACOSX_LIBS="-Wl,-framework -Wl,CoreFoundation -Wl,-framework -Wl,CoreServices"
+   fi
